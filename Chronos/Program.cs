@@ -19,7 +19,7 @@ namespace Chronos
 
             crono2.Start();
 
-            Thread.Sleep(200);
+            Thread.Sleep(800);
 
             // Pára a contagem do tempo
             crono1.Stop();
