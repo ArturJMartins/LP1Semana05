@@ -8,16 +8,16 @@ namespace RanDice
         {
             int n_dados = int.Parse(args[0]);
             int semente = int.Parse(args[1]);
-
-            Random random = new Random(semente);
             int soma = 0;
+
+            //gera uma forma específica de random (depende da semente)
+            Random random = new Random(semente);
 
             for (int i = 0; i < n_dados; i++)
             {
                 int dado = random.Next(1,7);
                 soma += dado;
             }
-
             Console.WriteLine(soma);
             }
     }
