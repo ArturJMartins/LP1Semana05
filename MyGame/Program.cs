@@ -9,6 +9,8 @@ namespace MyGame
         private float health;
         private float shield;
 
+        private static int countPowerUp;
+
         public Enemy(String _name)
         {
             // isto nem é necessário por causa da funçao SetName, mas
@@ -18,6 +20,11 @@ namespace MyGame
             SetName(_name);
             health = 100;
             shield = 0;
+        }
+
+        static Enemy()
+        {
+            countPowerUp = 0;
         }
 
         public string GetName()
@@ -76,6 +83,12 @@ namespace MyGame
                 shield += quantidade;
                 if(shield > 100) shield = 100;
             }
+            countPowerUp++;
+        }
+
+        public static int GetPowerUp()
+        {
+            return countPowerUp;
         }
     }
     class Program
@@ -88,6 +101,7 @@ namespace MyGame
             //+ $"HP is {loki.GetHealth()}");
 
             Enemy[] enemies = new Enemy[int.Parse(args[0])];
+            
 
             for(int i = 0; i < int.Parse(args[0]); i++)
             {
@@ -106,6 +120,9 @@ namespace MyGame
                 Console.WriteLine($"{enemy.GetName()} {enemy.GetHealth()}" +
                  $" {enemy.GetShield()}");
             }
+
+                Console.WriteLine("PowerUps coletados: " +
+                $"{Enemy.GetPowerUp()}");
             
         }
     }
