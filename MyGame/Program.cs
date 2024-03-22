@@ -9,9 +9,13 @@ namespace MyGame
         private float health;
         private float shield;
 
-        public Enemy(String name)
+        public Enemy(String _name)
         {
-            this.name = name;
+            // isto nem é necessário por causa da funçao SetName, mas
+            // se não tivesse essa funçao terias que colocar this.name
+            this.name = _name;
+
+            SetName(_name);
             health = 100;
             shield = 0;
         }
@@ -32,12 +36,42 @@ namespace MyGame
                 if (health < 0) health = 0;
             }
         }
+
+        public void SetName(string _name)
+        {
+            string newName = "";
+            if(_name.Length > 8)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    newName += _name[i];          
+                }
+            }
+            else
+            {
+                newName += _name;
+            }
+            this.name = newName;
+        }
+
+        public float GetHealth()
+        {
+            return this.health;
+        }
+
+        public float GetShield()
+        {
+            return this.shield;
+        }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Enemy loki = new Enemy("Loki");
+            loki.SetName("   Grindalokki   ");
+            Console.WriteLine($"Name is {loki.GetName()} and "
+            + $"HP is {loki.GetHealth()}");
         }
     }
 }
