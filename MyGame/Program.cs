@@ -120,10 +120,8 @@ namespace MyGame
                 Console.WriteLine($"{enemy.GetName()} {enemy.GetHealth()}" +
                  $" {enemy.GetShield()}");
             }
-
                 Console.WriteLine("PowerUps coletados: " +
-                $"{Enemy.GetPowerUp()}");
-            
+                $"{Enemy.GetPowerUp()}"); 
         }
     }
 }
