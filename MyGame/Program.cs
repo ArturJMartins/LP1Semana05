@@ -63,6 +63,20 @@ namespace MyGame
         {
             return this.shield;
         }
+
+        public void PickupPowerUp(PowerUp powerUp, float quantidade)
+        {
+            if(powerUp == PowerUp.Health)
+            {
+                health += quantidade;
+                if(health > 100) health = 100;
+            }
+            else if (powerUp == PowerUp.Shield)
+            {
+                shield += quantidade;
+                if(shield > 100) shield = 100;
+            }
+        }
     }
     class Program
     {
@@ -80,10 +94,15 @@ namespace MyGame
                 Console.Write($"Nome do inimigo {i + 1}: ");
                 string enemyName = Console.ReadLine();
                 enemies[i] = new Enemy(enemyName);
-
+                //enemies[i].PickupPowerUp(PowerUp.Health,10);
+                //enemies[i].PickupPowerUp(PowerUp.Shield,50);
+                //enemies[i].TakeDamage(45);
             }
             foreach (Enemy enemy in enemies)
             {
+                enemy.PickupPowerUp(PowerUp.Health,10);
+                enemy.PickupPowerUp(PowerUp.Shield,50);
+                enemy.TakeDamage(45);
                 Console.WriteLine($"{enemy.GetName()} {enemy.GetHealth()}" +
                  $" {enemy.GetShield()}");
             }
